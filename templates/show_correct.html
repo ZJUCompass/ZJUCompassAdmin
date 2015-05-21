@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+    <table class="table">
+        <tr><th>时间</th><th>教师编号</th><th>姓名</th><th>部门</th><th>职称</th><th>电话</th><th>邮箱</th><th>办公地点</th><th>研究领域</th><tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.timestamp }}</td>
+            <td>{{ entry.teacher_id }}</td>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.department }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.phone }}</td>
+            <td>{{ entry.email }}</td>
+            <td>{% if entry.building %}{{ entry.building }} {% endif %}</td>
+            <td>{{ entry.field }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

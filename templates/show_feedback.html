@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+    <table class="table">
+        <tr><th>时间</th><th>反馈意见</th><th>电子邮件</th><th>联系电话</th><tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.timestamp }}</td>
+            <td>{{ entry.feedback }}</td>
+            <td>{{ entry.email }}</td>
+            <td>{{ entry.phone }}</td>
+        </tr>
+        {% endfor %}
+    </ul>
+    </table>
+{% endblock %}

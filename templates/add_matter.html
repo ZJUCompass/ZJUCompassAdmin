@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if session.logged_in %}
+        <form action="{{ url_for('add_matter') }}" method=post class=add-entry>
+        <dl>
+            <dt>事项名称:
+            <dd><input type=text size=30 name=name >
+            <dt>事项编号:
+            <dd><input type=text size=30 name=id >
+            <dt>申请材料:
+            <dd><textarea name=meterial rows=5 cols=40></textarea>
+            <dt>办事流程描述:
+            <dd><textarea name=description rows=5 cols=40></textarea>
+            <dt>受理时间:
+            <dd><input type=text size=30 name=time >
+            <dt>受理地址:
+            <dd><input type=text size=30 name=address >
+            <dt>咨询电话:
+            <dd><input type=text size=30 name=consult_phone >
+            <dt>详情链接:
+            <dd><input type=text size=30 name=detail_url >
+            <dd><input type=submit value="确认">
+        </dl>
+        </form>
+    {% endif %}
+{% endblock %}

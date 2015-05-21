@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+    <a class="btn btn-info" href="{{ url_for('add_matter') }}"> 新增 </a>
+    <a class="btn btn-success" href="{{ url_for('download_matter') }}">下载</a>
+    <ul class=entries>
+        {% for entry in entries %}
+        <li>
+        <h4>{{ entry.matter_name }} </h4>
+        
+        <a class="btn btn-default" href="{{ url_for('edit_matter') }}?id={{entry.matter_id}}">编辑</a>
+        
+        <a class="btn btn-default" href="{{ url_for('del_matter') }}?matter_id={{entry.matter_id}}">删除</a> 
+        <br/><br/>
+
+        <dl class="dl-horizontal">
+        <dt>事项名称</dt><dd>{{ entry.matter_name }}</dd>
+        <dt>事项编号</dt><dd>{{ entry.matter_id }}</dd>
+        <dt>申请材料</dt><dd>{{ entry.matter_meterial }}</dd>
+        <dt>办事流程描述</dt><dd>{{ entry.matter_description }}</dd>
+        <dt>受理时间</dt><dd>{{ entry.matter_time }}</dd>
+        <dt>受理地址</dt><dd>{{ entry.matter_address }}</dd>
+        <dt>咨询电话</dt><dd>{{ entry.matter_consult_phone }}</dd>
+        <dt>详情链接</dt><dd><a href="{{ entry.matter_detail_url }}">{{ entry.matter_detail_url }}</a></dd>
+        </dl>
+        <br/>
+        </li>
+        {% else %}
+            <li><em>Unbelievable.  No entries here so far</em>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+    <a class="btn btn-info" href="{{ url_for('add_entry') }}"> 新增 </a>
+    <a class="btn btn-success" href="{{ url_for('download_teacher') }}">下载</a>
+    <ul class=entries>
+        {% for entry in entries %}
+        <li>
+        <h4>{{ entry.name }} </h4>
+        
+        <a class="btn btn-default" href="{{ url_for('edit_entry') }}?id={{entry.teacher_id}}">编辑</a>
+         <a class="btn btn-default" href="{{ url_for('del_entry') }}?id={{entry.teacher_id}}">删除</a> 
+         <br/><br/>
+        <dl class="dl-horizontal">
+            <dt>ID</dt><dd>{{ entry.teacher_id }}</dd>
+            {% if entry.department %}<dt>部门</dt><dd>{{ entry.department }}</dd> {% endif %}
+            {% if entry.title %}<dt>职称</dt><dd>{{ entry.title }}</dd> {% endif %}
+            {% if entry.phone %}<dt>电话</dt><dd>{{ entry.phone }}</dd> {% endif %}
+            {% if entry.email %}<dt>电子邮件</dt><dd>{{ entry.email }}</dd> {% endif %}
+            {% if entry.building %}<dt>办公楼</dt><dd>{{ entry.building }}</dd> {% endif %}
+            {% if entry.room %}<dt>房间号</dt><dd>{{ entry.room }}</dd> {% endif %}
+            {% if entry.field %}<dt>研究领域</dt><dd>{{ entry.field }}</dd> {% endif %}
+
+        </li>
+        {% else %}
+            <li><em>Unbelievable.  No entries here so far</em>
+        {% endfor %}
+    </ul>
+{% endblock %}
